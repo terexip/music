@@ -1,7 +1,7 @@
 {
-    "name": " 𝐬𝐨𝐮𝐫𝐜𝐞 𝐚𝐥𝐢𝐜𝐞🥂 ",
-    "description": "〔 سـورس اليس   𝐬𝐨𝐮𝐫𝐜𝐞 𝐚𝐥𝐢𝐜𝐞🥂 \n افضـل سـورس لتشغيل الصوتيات في المكالمه  › تحديثـات متواصله › 〔 حصريـاً 〕\n - مطـور السـورس : 𝒏𝒂𝒋𝒅 🇸🇦",
-    "logo": "https://graph.org/file/03e1a949d472a18e252a0.jpg",
+    "name": " سورس سم ",
+    "description": "〔 سـورس سم  \n افضـل سـورس لتشغيل الصوتيات في المكالمه  › تحديثـات متواصله › 〔 حصريـاً 〕\n - مطـور السـورس : 𝐖𝐎𝑳𝐅",
+    "logo": "https://telegra.ph/file/86ac9916a138623f05c0e.jpg",
     "keywords": [
     "python3",
     "telegram",
@@ -36,12 +36,12 @@
       },
       "START_IMG_URL": {
         "description": "رابط صوره start او اتركه كما هو.",
-        "value": "https://graph.org/file/652fd5d4587fd12d49544.jpg",
+        "value": "https://telegra.ph/file/86ac9916a138623f05c0e.jpg",
         "required": true
       },
       "MONGO_DB_URI": {
         "description": "لا تغيره. او قم بانشاء قاعده البيانات. الشرح https://t.me/ngd_1/2.",
-        "value": "mongodb+srv://abood:king@cluster0.rbp1cqz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
+        "value": "mongodb+srv://proceed58:proceed58@cluster0.p5s9ym5.mongodb.net/?retryWrites=true&w=majority",
         "required": true
       },
       "OWNER_ID": {
@@ -67,12 +67,12 @@
       },
       "CHANNEL_NAME": {
         "description": "اسم قناتك.",
-        "value": "𝚂𝚄𝙾𝚁𝙲𝙴 alice ",
+        "value": "سورس سم ",
         "required": true
       },
       "CHANNEL_LINK": {
         "description": "رابط قناتك.",
-        "value": "https://t.me/ngd_1",
+        "value": "https://t.me/a_re_aa",
         "required": true
       },
       "AUTO_LEAVING_ASSISTANT": {
@@ -82,7 +82,7 @@
       },
       "LOGGER_ID": {
         "description": "ادخل ايدي مجموعة السجل بجانب الرقم -100 فـي المربع〔 سوي مجموعة جديدة وروح لاعدادات المجموعة وخلي السجل ظاهر .. بعدها ارفع البوت والحساب المساعد إشـراف وافتـح المكالمه بعدها جيب ايدي المجموعة لهنا 〕.",
-        "value": "-100",
+        "value": "",
         "required": true
       }
     },
