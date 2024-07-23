@@ -23,7 +23,7 @@ DURATION_LIMIT_MIN = int(getenv("DURATION_LIMIT", 480))
 LOGGER_ID = int(getenv("LOGGER_ID"))
 
 # Get this value from @FallenxBot on Telegram by /id
-OWNER_ID = int(getenv("OWNER_ID", 7095783155))
+OWNER_ID = int(getenv("OWNER_ID", 7085943284))
 
 ## Fill these variables if you re deploying on heroku.
 # Your heroku app name
@@ -40,9 +40,9 @@ GIT_TOKEN = getenv(
     "GIT_TOKEN", None
 )  # Fill this variable if your upstream repository is private
 
-CHANNEL_NAME = getenv("CHANNEL_NAME", "سورس سم ")
-CHANNEL_LINK = getenv("CHANNEL_LINK", "https://t.me/a_re_aa")
-SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/a_re_aa")
+CHANNEL_NAME = getenv("CHANNEL_NAME", "سورس اليس ♡ ")
+CHANNEL_LINK = getenv("CHANNEL_LINK", "https://t.me/ngd_1")
+SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/ngd_1")
 
 # Set this to True if you want the assistant to automatically leave chats after an interval
 AUTO_LEAVING_ASSISTANT = bool(getenv("AUTO_LEAVING_ASSISTANT", False))
