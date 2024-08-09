@@ -241,7 +241,7 @@ class YouTubeAPI:
             link = self.base + link
         loop = asyncio.get_running_loop()
 
-def audio_dl():
+        def audio_dl():
             ydl_optssx = {
                 "outtmpl": "downloads/%(id)s.%(ext)s",
                 "quiet": True,
