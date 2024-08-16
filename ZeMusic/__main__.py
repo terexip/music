@@ -3,8 +3,8 @@ import importlib
 
 from pyrogram import idle
 from pytgcalls.exceptions import NoActiveGroupCall
-
 import config
+
 from ZeMusic import LOGGER, app, userbot
 from ZeMusic.core.call import Mody
 from ZeMusic.misc import sudo
