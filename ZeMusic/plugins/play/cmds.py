@@ -12,26 +12,43 @@ import config
 
 @app.on_message(command(["اوامر", "التشغيل "]))
 async def zdatsr(client: Client, message: Message):
-    usr = await client.get_users(OWNER_ID)
-    name = usr.first_name
-    usrnam = usr.username
-    await message.reply_photo(
-        photo=START_IMG_URL,
-        caption=f"""<b>-› مرحبا بك</b> {message.from_user.mention} .\n\n<b>-› جميع اوامر البوت موجودة بالقائمة هذي ، اضغط الازرار الي تحت واستكشف ياوحش\n</b>""",
-        reply_markup=InlineKeyboardMarkup(
-            [
+    # الحصول على معلومات المستخدم
+    try:
+        usr = await client.get_users(OWNER_ID)
+        name = usr.first_name
+        usrnam = usr.username
+    except Exception as e:
+        await message.reply(f"حدث خطأ في جلب معلومات المستخدم: {str(e)}")
+        return
+
+    # التحقق من الرابط قبل إرسال الصورة
+    if not START_IMG_URL:
+        await message.reply("الصورة غير متاحة حالياً.")
+        return
+
+    try:
+        # إرسال رسالة الرد بالصورة والقائمة
+        await message.reply_photo(
+            photo=START_IMG_URL,
+            caption=f"""<b>-› مرحبا بك</b> {message.from_user.mention} .\n\n<b>-› جميع اوامر البوت موجودة بالقائمة هذي، اضغط الأزرار تحت واستكشف ياوحش\n</b>""",
+            reply_markup=InlineKeyboardMarkup(
                 [
-                    InlineKeyboardButton(
-                        " اوامــر التشغيــل ", callback_data="zzzll"),
-                ],[
-                    InlineKeyboardButton(
-                        " اوامـر القنـاة ", callback_data="zzzch"),
-                    InlineKeyboardButton(
-                        " اوامـر الادمـن ", callback_data="zzzad"),
-                ],[
-                    InlineKeyboardButton(
-                        text=config.CHANNEL_NAME, url=config.CHANNEL_LINK),
-                ],
-            ]
-        ),
-    )
+                    [
+                        InlineKeyboardButton(
+                            " اوامــر التشغيــل ", callback_data="zzzll"),
+                    ],
+                    [
+                        InlineKeyboardButton(
+                            " اوامـر القنـاة ", callback_data="zzzch"),
+                        InlineKeyboardButton(
+                            " اوامـر الادمـن ", callback_data="zzzad"),
+                    ],
+                    [
+                        InlineKeyboardButton(
+                            text=config.CHANNEL_NAME, url=config.CHANNEL_LINK),
+                    ],
+                ]
+            ),
+        )
+    except Exception as e:
+        await message.reply(f"حدث خطأ أثناء إرسال الرسالة: {str(e)}")
