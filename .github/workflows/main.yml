@@ -19,6 +19,9 @@ jobs:
       with:
         python-version: '3.9'  # استخدم نسخة بايثون التي تستخدمها
 
+    - name: تثبيت FFmpeg
+      run: sudo apt-get install -y ffmpeg  # تثبيت FFmpeg
+
     - name: تثبيت الاعتمادات
       run: |
         python -m pip install --upgrade pip
