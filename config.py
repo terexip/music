@@ -15,7 +15,7 @@ BOT_TOKEN = getenv("BOT_TOKEN","5966375685:AAE4ivL6HbVQII4ml5AleUCAStiSwHk9wuA")
 BOT_NAME = getenv("BOT_NAME","Music Terex")
 
 # Get your mongo url from cloud.mongodb.com
-MONGO_DB_URI = getenv("MONGO_DB_URI","mongodb+srv://apptmvipbot:wV9KQkaySlqNvfQk@cluster0.y1yqp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+MONGO_DB_URI = getenv("MONGO_DB_URI","mongodb+srv://proceed58:proceed58@cluster0.p5s9ym5.mongodb.net/?retryWrites=true&w=majority")
 
 DURATION_LIMIT_MIN = int(getenv("DURATION_LIMIT", 480))
 
@@ -40,9 +40,9 @@ GIT_TOKEN = getenv(
     "GIT_TOKEN", None
 )  # Fill this variable if your upstream repository is private
 
-CHANNEL_NAME = getenv("CHANNEL_NAME", "تحديثات نوف ")
-CHANNEL_LINK = getenv("CHANNEL_LINK", "https://t.me/Sourcenouf")
-SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/Sourcenouf")
+CHANNEL_NAME = getenv("CHANNEL_NAME", "Music Terex")
+CHANNEL_LINK = getenv("CHANNEL_LINK", "https://t.me/Source_terex")
+SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/Ii_ebots")
 
 # Set this to True if you want the assistant to automatically leave chats after an interval
 AUTO_LEAVING_ASSISTANT = bool(getenv("AUTO_LEAVING_ASSISTANT", False))
@@ -79,7 +79,7 @@ autoclean = []
 confirmer = {}
 
 
-START_IMG_URL = getenv("START_IMG_URL", "https://graph.org/file/e254d61318e928efc7504.jpg")
+START_IMG_URL = getenv("START_IMG_URL")
 PING_IMG_URL = "https://telegra.ph/file/e29510f6e263bb5264cfb.jpg"
 PLAYLIST_IMG_URL = "https://telegra.ph/file/e29510f6e263bb5264cfb.jpg"
 STATS_IMG_URL = "https://telegra.ph/file/e29510f6e263bb5264cfb.jpg"
