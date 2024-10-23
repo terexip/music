@@ -1,0 +1,29 @@
+name: سير عمل بوت تيليجرام
+
+on:
+  workflow_dispatch:  # يسمح بالتشغيل اليدوي
+  push:               # يتم التشغيل عند الدفع إلى الفرع الرئيسي
+    branches:
+      - main          # استبدل باسم الفرع الرئيسي إذا كان مختلفًا
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: استعراض الكود
+      uses: actions/checkout@v2
+
+    - name: إعداد بايثون
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.9'  # استخدم نسخة بايثون التي تستخدمها
+
+    - name: تثبيت الاعتمادات
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt  # تأكد من وجود ملف requirements.txt
+
+    - name: تشغيل البوت
+      run: |
+        python -m ZeMusic.__main__  # المسار لملف التشغيل الخاص بك
