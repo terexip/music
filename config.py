@@ -79,7 +79,7 @@ autoclean = []
 confirmer = {}
 
 
-START_IMG_URL = getenv("START_IMG_URL")
+START_IMG_URL = getenv("START_IMG_URL", "https://graph.org/file/ff08d8f31b2b4dc012324.jpg")
 PING_IMG_URL = "https://telegra.ph/file/e29510f6e263bb5264cfb.jpg"
 PLAYLIST_IMG_URL = "https://telegra.ph/file/e29510f6e263bb5264cfb.jpg"
 STATS_IMG_URL = "https://telegra.ph/file/e29510f6e263bb5264cfb.jpg"
