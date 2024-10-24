@@ -1,15 +1,13 @@
-import asyncio
-from pyrogram import filters, Client
+from pyrogram import filters
 from pyrogram.types import Message
 from config import BANNED_USERS
-
-app = Client("my_bot")
+from ZeMusic import app  # تأكد من استيراد التطبيق الخاص بك
 
 # متغيرات الاشتراك
-required_channel = None  # القناة المطلوبة للاشتراك
-subscribed_users_count = 0  # عدد الأعضاء الذين اشتركوا
-subscription_limit = 0  # الحد الأقصى لعدد الأعضاء
-is_subscription_required = False  # إذا كان الاشتراك الإجباري مفعلًا
+required_channel = None
+subscribed_users_count = 0
+subscription_limit = 0
+is_subscription_required = False
 
 @app.on_message(filters.command("اشتراك إجباري") & filters.group)
 async def add_subscription(client, message: Message):
@@ -21,9 +19,9 @@ async def add_subscription(client, message: Message):
         return
 
     required_channel = command_parts[0]
-    subscription_limit = int(command_parts[1])  # تحويل العدد إلى عدد صحيح
+    subscription_limit = int(command_parts[1])
     is_subscription_required = True
-    subscribed_users_count = 0  # إعادة تعيين العدد عند التفعيل
+    subscribed_users_count = 0
 
     await message.reply_text(f"تم تفعيل الاشتراك الإجباري في القناة: {required_channel} عدد الأعضاء المطلوبين: {subscription_limit}")
 
@@ -32,26 +30,8 @@ async def remove_subscription(client, message: Message):
     global required_channel, is_subscription_required, subscribed_users_count
     required_channel = None
     is_subscription_required = False
-    subscribed_users_count = 0  # إعادة تعيين العدد عند الحذف
+    subscribed_users_count = 0
     await message.reply_text("تم حذف الاشتراك الإجباري.")
-
-@app.on_message(filters.command("تعطيل الاشتراك الاجباري") & filters.group)
-async def disable_subscription(client, message: Message):
-    global is_subscription_required
-    if is_subscription_required:
-        is_subscription_required = False
-        await message.reply_text("تم تعطيل الاشتراك الإجباري.")
-    else:
-        await message.reply_text("الاشتراك الإجباري غير مفعل.")
-
-@app.on_message(filters.command("تفعيل الاشتراك الاجباري") & filters.group)
-async def enable_subscription(client, message: Message):
-    global is_subscription_required
-    if not is_subscription_required:
-        is_subscription_required = True
-        await message.reply_text("تم تفعيل الاشتراك الإجباري.")
-    else:
-        await message.reply_text("الاشتراك الإجباري مفعل بالفعل.")
 
 @app.on_message(filters.text & filters.group)
 async def check_subscription(client, message: Message):
@@ -64,22 +44,11 @@ async def check_subscription(client, message: Message):
                 await message.reply_text("يجب أن تكون مشتركًا في القناة قبل إرسال الرسالة.")
                 return
             else:
-                # زيادة عدد الأعضاء المشتركين إذا كان الاشتراك ناجحًا
                 subscribed_users_count += 1
-                # تحقق من الحد الأقصى
                 if subscribed_users_count >= subscription_limit:
                     await message.reply_text("تم الوصول إلى الحد الأقصى لعدد المشتركين. تم إلغاء الاشتراك الإجباري.")
-                    is_subscription_required = False  # إلغاء الاشتراك الإجباري
+                    is_subscription_required = False
                     required_channel = None
                     subscribed_users_count = 0
         except Exception as e:
             await message.reply_text("حدث خطأ أثناء التحقق من الاشتراك.")
-
-async def main():
-    async with app:
-        await app.start()
-        print("البوت يعمل الآن...")
-        await app.idle()  # ينتظر حتى يتوقف البوت
-
-if __name__ == "__main__":
-    asyncio.run(main())
