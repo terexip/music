@@ -1,4 +1,4 @@
-import time
+import asyncio
 from pyrogram import filters, Client
 from pyrogram.types import Message
 from config import BANNED_USERS
@@ -75,4 +75,11 @@ async def check_subscription(client, message: Message):
         except Exception as e:
             await message.reply_text("حدث خطأ أثناء التحقق من الاشتراك.")
 
-app.run()
+async def main():
+    async with app:
+        await app.start()
+        print("البوت يعمل الآن...")
+        await app.idle()  # ينتظر حتى يتوقف البوت
+
+if __name__ == "__main__":
+    asyncio.run(main())
