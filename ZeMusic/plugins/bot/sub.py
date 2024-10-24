@@ -1,5 +1,4 @@
 import time
-import asyncio
 from pyrogram import filters, Client
 from pyrogram.types import Message
 from config import BANNED_USERS
@@ -36,6 +35,24 @@ async def remove_subscription(client, message: Message):
     subscribed_users_count = 0  # إعادة تعيين العدد عند الحذف
     await message.reply_text("تم حذف الاشتراك الإجباري.")
 
+@app.on_message(filters.command("تعطيل الاشتراك الاجباري") & filters.group)
+async def disable_subscription(client, message: Message):
+    global is_subscription_required
+    if is_subscription_required:
+        is_subscription_required = False
+        await message.reply_text("تم تعطيل الاشتراك الإجباري.")
+    else:
+        await message.reply_text("الاشتراك الإجباري غير مفعل.")
+
+@app.on_message(filters.command("تفعيل الاشتراك الاجباري") & filters.group)
+async def enable_subscription(client, message: Message):
+    global is_subscription_required
+    if not is_subscription_required:
+        is_subscription_required = True
+        await message.reply_text("تم تفعيل الاشتراك الإجباري.")
+    else:
+        await message.reply_text("الاشتراك الإجباري مفعل بالفعل.")
+
 @app.on_message(filters.text & filters.group)
 async def check_subscription(client, message: Message):
     global required_channel, subscribed_users_count, is_subscription_required
@@ -58,10 +75,4 @@ async def check_subscription(client, message: Message):
         except Exception as e:
             await message.reply_text("حدث خطأ أثناء التحقق من الاشتراك.")
 
-async def main():
-    async with app:
-        await app.start()
-        await app.idle()  # الانتظار حتى يتم إنهاء البوت
-
-if __name__ == "__main__":
-    asyncio.run(main())
+app.run()
